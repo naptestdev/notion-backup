@@ -1,0 +1,670 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>E-Commerce Todo</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b94547c2-05c1-4910-9cad-8d99090f53e7" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🛒</span></div><h1 class="page-title">E-Commerce Todo</h1></header><div class="page-body"><h3 id="7e68447d-08de-43c4-8c99-cb3e6c2880ed" class="">Client</h3><ul id="73730e0e-50cb-442f-a2b3-d87f520c74b7" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change profile info</span><ul id="d84cef92-a51c-416d-a133-ebce7dbc1944" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change username</span></li></ul><ul id="6de9af94-3b2a-4b8b-b925-3329af18359e" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change password</span></li></ul><ul id="8988f904-76e3-4b18-850b-598885b4a08f" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change address</span></li></ul></li></ul><ul id="c345a25f-ba2d-4c08-921a-23f7bfa7a1bf" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Payment with VNPay</span></li></ul><ul id="476a9d16-782b-45fa-96ff-495b97684625" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Product view</span></li></ul><ul id="3b3cb6fe-39e4-4760-9f49-c57044e8db86" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Search</span><ul id="9cde6667-5ad0-4d81-b33b-0ae08968d24e" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Name</span></li></ul><ul id="3a5b92db-5a1b-4412-a6d0-7609af274d6b" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Category</span></li></ul><ul id="41798d90-f26a-49e5-b75b-f11af5188b04" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Price</span></li></ul><ul id="861e15bd-0e96-4e26-9353-925fb47160e7" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Rating</span></li></ul></li></ul><ul id="a98941f5-c3e4-46f8-b499-95b19f191fdb" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Reviews</span><ul id="7a7f465f-9297-4914-82e7-4f593daa36b3" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">User rating</span></li></ul><ul id="09003e2a-47c4-42bf-befd-5d423847e355" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">User comment</span></li></ul></li></ul><ul id="d02fd918-2668-4d17-82ab-bd703ecbb2c7" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Suggested Item</span></li></ul><ul id="61cc42af-114c-4b13-afb2-0359798ed231" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Cart</span></li></ul><ul id="082330a9-3d67-4042-87a2-77dd76b7bf5f" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Create order</span></li></ul><ul id="cef208fc-abf2-4588-86ca-627ca3190ace" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Manage my orders</span><ul id="21a232ec-b948-440a-b854-052e0746411c" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Cancel order</span></li></ul></li></ul><ul id="46a837c1-fb92-4c68-8226-bf100ddb8449" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Error</span><ul id="1fb79a4a-9209-4645-8cb6-ba7e3c34e61f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Handle 404 error swr</span></li></ul><ul id="e40a741b-9675-4164-b9d8-25cd09d4cd21" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Handle un-authenticated routes</span></li></ul><ul id="8501fd0a-1952-410e-8d03-963854aedff5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Handle error when fetching axios</span></li></ul><ul id="c8354688-c413-483d-befc-1b134049e534" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Handle error when not logged in</span></li></ul></li></ul><ul id="fb74dd74-c9d2-4914-af67-cce1ff282151" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Responsive</span></li></ul><ul id="055ea227-ba6f-46d2-bbb7-2191fe512de4" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Add alert when:</span><ul id="cace5e41-5142-4a0c-b9a7-2538f1f6f5c6" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Sign Up</span></li></ul><ul id="c5f08b62-6537-4073-8b58-c599e7ac3d88" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change Profile Info</span></li></ul><ul id="2ec33777-33f4-4855-8e05-e1e1bd501dca" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Add item to cart</span></li></ul></li></ul><ul id="bf3dcf83-b743-4d50-8a17-333cbe9e1044" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change ratings logic using aggregate mongo</span></li></ul><ul id="a0191077-4c10-4265-90b6-fdc9a971aa71" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Forget password</span></li></ul><h3 id="3892abaa-bd88-4f5b-8d76-825b5446ca8a" class="">Admin</h3><ul id="08c91b3b-8cea-492d-b9bf-3214112e3974" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Authentication (is admin)</span></li></ul><ul id="43b7b57f-e5c0-4e7a-bb4e-09d115862dc1" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Create a email template when sending verification email</span></li></ul><ul id="352fa51e-21da-48b3-8d3f-7f149ce5cec4" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Landing page</span><ul id="3c103e7e-72f1-4ec6-97aa-ab70af186f08" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Total sales</span></li></ul><ul id="f0d28843-ae37-4321-abc5-04f3d38a0cb9" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Total Users</span></li></ul><ul id="2dbf0dcc-71a7-4f12-a95f-0dfa2fc15ad0" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Total Transactions</span></li></ul><ul id="868775af-0e96-4562-b22c-d6d422fe7839" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">New Users</span></li></ul><ul id="ab26325d-b9c2-46f2-880d-a038ccc37828" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Latest transaction</span></li></ul></li></ul><ul id="7c00d94b-47f9-4d49-beb7-75ac42c4f62a" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Users</span><ul id="cd686df6-2490-4126-954e-178b1d71ae6a" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Read</span></li></ul><ul id="ad3e54b3-8086-4146-ba51-e7356ce2657d" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Delete</span></li></ul></li></ul><ul id="f06bdce4-5afe-4c46-a2fe-8115e665a3d4" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Products</span><ul id="9a46e7dc-dc4f-418a-b3b4-f8bec9ab5ae9" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Create</span></li></ul><ul id="fced01f2-d912-413f-af69-51541f5366bc" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Read</span></li></ul><ul id="ff3aa610-8410-4705-bef0-d02981bfd35f" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Update</span></li></ul><ul id="07c88685-d88a-446b-9314-b2a271560036" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Delete</span></li></ul></li></ul><ul id="0675bcdf-6839-4833-b1d3-1f5d35969dab" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Manage Orders</span><ul id="050ede36-c767-4920-8e3e-44801cf81dec" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Change order status (pending, delivering, completed)</span></li></ul></li></ul><ul id="ac357f2f-12a9-4ffd-8e9e-b18de01e7b43" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Banner</span></li></ul><ul id="9cadb2c3-2bd7-4ccd-81d2-30fafa92cc5e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Response to user feedback</span></li></ul><ul id="28c1046c-4f56-46fd-97a7-4835f1904c2a" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Print the statistic or export file</span><ul id="f235d2c6-b693-4a72-a7da-0b35536097d0" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">CSV</span></li></ul><ul id="9d9669e0-6fbc-401a-9003-5ea73c1798a8" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Xlsx</span></li></ul><ul id="54e8712c-e654-4246-9586-88dd8b62a7b2" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">JSON</span></li></ul></li></ul><ul id="e7569d72-b993-407b-8e92-36209170ac51" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Responsive</span></li></ul><ul id="ad68eb74-aa8f-497d-8b17-81f43c9816c7" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Full screen view of image in banners and products</span></li></ul><ul id="c37be085-3cf2-41b8-800f-ad14dd24bd94" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Add alert when</span><ul id="bd7af3d9-a2b6-4e2f-bbcb-dc201d0e13e5" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">User, product, banners update</span></li></ul></li></ul><ul id="7e04a070-0625-48e0-a232-fbb28550ddf9" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">Complete all loading effect and error displaying</span></li></ul><p id="80d422b7-9a2a-4b51-b5ef-cae1beb92125" class="">
+</p><h2 id="6fa950eb-a280-4b6e-a58c-b24943b5e009" class="">Requirement</h2><ul id="0a50d376-3daf-4ec3-8344-e3d54f764741" class="bulleted-list"><li style="list-style-type:disc">NodeJS ≥14: <a href="https://nodejs.org/en/">https://nodejs.org/en/</a></li></ul><ul id="f00e08f1-bc1c-4250-8275-923c80d4dcb7" class="bulleted-list"><li style="list-style-type:disc">Setup Gmail OAuth2: <a href="https://youtu.be/18qA61bpfUs">https://youtu.be/18qA61bpfUs</a></li></ul><ul id="16497094-ab6d-47ee-af59-865ce915a5ab" class="bulleted-list"><li style="list-style-type:disc">Thanh toán bằng VNPay<ul id="8cdeef11-d2ed-419f-9878-addc1d49efef" class="bulleted-list"><li style="list-style-type:circle">Vào <a href="https://sandbox.vnpayment.vn/devreg">https://sandbox.vnpayment.vn/devreg</a> và tạo một tài khoản (môi trường test)</li></ul><ul id="7d6d37c4-901e-4919-86c8-22dfe5e66b83" class="bulleted-list"><li style="list-style-type:circle">Verify email </li></ul><ul id="f741aa1e-f587-4c7d-93b1-2d64c1634ca2" class="bulleted-list"><li style="list-style-type:circle">Chờ một mail chứa title như sau “Thông tin tích hợp cho Merchant Cổng TT VNPAY” - Save lại email đó để sử dụng <strong>vnp_TmnCode và vnp_HashSecret trong .env</strong></li></ul></li></ul><ul id="28652fda-52f5-481b-a19c-6dba37ab0c55" class="bulleted-list"><li style="list-style-type:disc">MongoDB Atlas<ol type="1" id="9229fc2a-a8b3-4ecd-a97e-8a61778d5f60" class="numbered-list" start="1"><li>Dùng cái atlas có sẵn</li></ol><ol type="1" id="1d48e277-3486-4a32-a7a2-0ca99c170eed" class="numbered-list" start="2"><li>Tự tạo atlas rồi import JSON: <a href="https://github.com/naptestdev/ecommerce/tree/data">https://github.com/naptestdev/ecommerce/tree/data</a></li></ol></li></ul><figure id="a5f690fc-bd6b-4ff2-bd61-770253fdb448" class="link-to-page"><a href="E-Commerce%20Todo%20b94547c205c149109cad8d99090f53e7/Setup%20a5f690fcbd6b4ff2bd61770253fdb448.html"><span class="icon">🛠️</span>Setup</a></figure><figure id="6677ff7e-c885-4ebe-af5f-2a79ad4a83e5" class="link-to-page"><a href="E-Commerce%20Todo%20b94547c205c149109cad8d99090f53e7/Database%20design%206677ff7ec8854ebeaf5f2a79ad4a83e5.html"><span class="icon">💽</span>Database design</a></figure></div></article></body></html>
