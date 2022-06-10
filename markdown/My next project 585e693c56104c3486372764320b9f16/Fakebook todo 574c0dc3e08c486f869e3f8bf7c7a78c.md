@@ -1,10 +1,10 @@
 # Fakebook todo
 
-- [x]  Auth with google
-- [x]  Create homepage UI
-- [x]  Add mock friends data
-- [x]  Add create post feature
-- [x]  React to post
+- [ ]  Auth with google
+- [ ]  Create homepage UI
+- [ ]  Add mock friends data
+- [ ]  Add create post feature
+- [ ]  React to post
 - [ ]  Click to see post image
 - [ ]  Comment on post
 - [ ]  Reply comment

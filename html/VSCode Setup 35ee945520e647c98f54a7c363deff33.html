@@ -670,12 +670,15 @@ blockquote {
 	&quot;editor.fontSize&quot;: 14,
   &quot;editor.fontFamily&quot;: &quot;Jetbrains Mono&quot;,
   &quot;editor.fontLigatures&quot;: true,
-}</code></pre><h2 id="2a373b5c-a37e-4742-a7ea-7cf2a900482a" class="">Extensions</h2><ul id="2d9cc93b-9677-4a45-84bb-7b9e44c225f8" class="bulleted-list"><li style="list-style-type:disc">Auto Rename Tag</li></ul><ul id="53319b54-76f5-48a0-a2f2-7cfd8516a875" class="bulleted-list"><li style="list-style-type:disc">Code Spell Checker</li></ul><ul id="2cab342f-2f63-4c56-ab7f-75e846c72dd5" class="bulleted-list"><li style="list-style-type:disc">Codesnap (copy ảnh màn hình code đẹp)</li></ul><ul id="cc361cd9-6b6f-4116-9be2-6ec64b7e1e9d" class="bulleted-list"><li style="list-style-type:disc">ESLint (linting, gợi ý cho js, ts)</li></ul><ul id="e491a38b-b8f1-48a8-8e12-798f86b920cb" class="bulleted-list"><li style="list-style-type:disc">Import Cost (hiển thị import size)</li></ul><ul id="734be0ad-c0b6-4471-98c5-4103c1ea453b" class="bulleted-list"><li style="list-style-type:disc">Prettier</li></ul><ul id="1b8c3c8b-353b-44c3-9ff2-d7dca6392a71" class="bulleted-list"><li style="list-style-type:disc">sort-imports (format thứ tự import trong js, jsx, ts, tsx, hoạt động tốt với prettier)</li></ul><ul id="98fe3afa-ee08-4ba1-961a-0ba06cda82e1" class="bulleted-list"><li style="list-style-type:disc">Tabout (dùng tab để next ra khỏi các cái ngoặc, để tránh phải di chuyển tay bấm vào nút mũi tên phải)</li></ul><ul id="8cc9e009-4841-4342-9cb4-e1ee6bbdee46" class="bulleted-list"><li style="list-style-type:disc">Tailwind CSS Intellisense</li></ul><ul id="6b20b42d-0714-4390-a4d7-2faa2076fc4c" class="bulleted-list"><li style="list-style-type:disc">Thunder Client (test api và http request, giống hệt postman, nhưng là extension)</li></ul><ul id="d58cc7b5-c1c5-4fb4-8383-8d2af6585aa3" class="bulleted-list"><li style="list-style-type:disc">HTML CSS Support (Gợi ý css class cho html, thích hợp nếu code bootstrap trong html)</li></ul><h2 id="0155df27-ca4e-4b45-9165-e41b7628b139" class="">Settings</h2><pre id="c894f828-8bcc-4a47-9d9c-ef800157eb3e" class="code"><code>{
+}</code></pre><h2 id="2a373b5c-a37e-4742-a7ea-7cf2a900482a" class="">Extensions</h2><ul id="2d9cc93b-9677-4a45-84bb-7b9e44c225f8" class="bulleted-list"><li style="list-style-type:disc">Auto Rename Tag</li></ul><ul id="53319b54-76f5-48a0-a2f2-7cfd8516a875" class="bulleted-list"><li style="list-style-type:disc">Code Spell Checker</li></ul><ul id="2cab342f-2f63-4c56-ab7f-75e846c72dd5" class="bulleted-list"><li style="list-style-type:disc">Codesnap (copy ảnh màn hình code đẹp)</li></ul><ul id="cc361cd9-6b6f-4116-9be2-6ec64b7e1e9d" class="bulleted-list"><li style="list-style-type:disc">ESLint (linting, gợi ý cho js, ts)</li></ul><ul id="e491a38b-b8f1-48a8-8e12-798f86b920cb" class="bulleted-list"><li style="list-style-type:disc">Import Cost (hiển thị import size)</li></ul><ul id="734be0ad-c0b6-4471-98c5-4103c1ea453b" class="bulleted-list"><li style="list-style-type:disc">Prettier</li></ul><ul id="1b8c3c8b-353b-44c3-9ff2-d7dca6392a71" class="bulleted-list"><li style="list-style-type:disc">sort-imports (format thứ tự import trong js, jsx, ts, tsx, hoạt động tốt với prettier)</li></ul><ul id="6b20b42d-0714-4390-a4d7-2faa2076fc4c" class="bulleted-list"><li style="list-style-type:disc">Thunder Client (test api và http request, giống hệt postman, nhưng là extension)</li></ul><ul id="d58cc7b5-c1c5-4fb4-8383-8d2af6585aa3" class="bulleted-list"><li style="list-style-type:disc">HTML CSS Support (Gợi ý css class cho html, thích hợp nếu code bootstrap trong html)</li></ul><ul id="b8e9dcf6-2d2a-4f69-81df-4fa0e6d0d1d8" class="bulleted-list"><li style="list-style-type:disc">glean: (refactor react code)</li></ul><h2 id="0155df27-ca4e-4b45-9165-e41b7628b139" class="">Settings</h2><pre id="c894f828-8bcc-4a47-9d9c-ef800157eb3e" class="code"><code>{
 	// wrap mấy tab file ở phía trên
 	&quot;workbench.editor.wrapTabs&quot;: true,
 
 	// cực kì hữu ích khi dùng snippet, vẫn bật autocomplete
   &quot;editor.suggest.snippetsPreventQuickSuggestions&quot;: false,
+
+	// chọn kết quả autocomplete đầu tiên
+	&quot;editor.suggestSelection&quot;: &quot;first&quot;,
 
 	// nên để tab size bằng 2 thay vì 4
   &quot;editor.tabSize&quot;: 2,
@@ -700,10 +703,25 @@ blockquote {
   &quot;files.autoSave&quot;: &quot;onWindowChange&quot;,
 
 	// thay thế cho bracket pair colorizer
-  &quot;editor.bracketPairColorization.enabled&quot;: true,
   &quot;editor.guides.bracketPairs&quot;: true,
 
 	// linting cho javascript, cực kì hữu ích
 	&quot;js/ts.implicitProjectConfig.checkJs&quot;: true,
+
+	// tránh gạch chân vàng khi code tailwind
+	&quot;css.lint.unknownAtRules&quot;: &quot;ignore&quot;,
+
+	// bấm nút sync git repo nhanh hơn
+	&quot;git.confirmSync&quot;: false,
+
+	// syntax highlighting cho những file .env, .mdx, ...
+	&quot;files.associations&quot;: {
+    &quot;.env&quot;: &quot;ini&quot;,
+    &quot;.env.local&quot;: &quot;ini&quot;,
+    &quot;.env.defaults&quot;: &quot;ini&quot;,
+    &quot;.env.example&quot;: &quot;ini&quot;,
+    &quot;*.toml&quot;: &quot;yaml&quot;,
+    &quot;*.mdx&quot;: &quot;markdown&quot;
+  },
 }</code></pre><p id="7066e3e5-b60a-485c-90a8-11bab601a881" class="">
 </p></div></article></body></html>
