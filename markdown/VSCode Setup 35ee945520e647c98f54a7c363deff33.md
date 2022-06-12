@@ -94,7 +94,6 @@ Settings VSCode:
     ".env.local": "ini",
     ".env.defaults": "ini",
     ".env.example": "ini",
-    "*.toml": "yaml",
     "*.mdx": "markdown"
   },
 }
